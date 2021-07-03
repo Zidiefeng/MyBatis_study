@@ -1,10 +1,8 @@
 package com.kaitan.dao;
-
 import com.kaitan.pojo.User;
 import com.kaitan.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
-
 import java.util.List;
 
 public class UserDaoTest {

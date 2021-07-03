@@ -10,6 +10,18 @@ import java.util.List;
 import java.util.Map;
 
 public class UserMapperTest {
+
+    @Test
+    public void getUserLike(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();//固定代码
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = mapper.getUserLike("%李%");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        sqlSession.close();//固定代码
+    }
+
     @Test
     public void test(){
         //获得sqlSession对象
@@ -54,6 +66,17 @@ public class UserMapperTest {
     }
 
     @Test
+    public void getUserById2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_id",2);
+        User user = mapper.getUserById2(map);
+        System.out.println(user);
+        sqlSession.close();
+    }
+
+    @Test
     public void addUser(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();//固定代码
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
@@ -77,8 +100,6 @@ public class UserMapperTest {
         mapper.addUser2(map);
         sqlSession.commit();
         sqlSession.close();
-
-
     }
 
     @Test

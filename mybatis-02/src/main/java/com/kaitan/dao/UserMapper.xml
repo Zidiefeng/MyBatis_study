@@ -11,7 +11,7 @@
 
 <mapper namespace="com.kaitan.dao.UserMapper">
 
-    <select id="getUserList" resultType="com.kaitan.pojo.User">
+    <select id="getUserList" resultType="user">
         select * from mybatis.user
     </select>
 

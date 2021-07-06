@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDaoTest {
     @Test
-    public void getUserLike(){
+    public void getUserList(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         List<User> userList = mapper.getUserList();

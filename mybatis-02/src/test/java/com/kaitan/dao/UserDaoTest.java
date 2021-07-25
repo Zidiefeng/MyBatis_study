@@ -1,4 +1,4 @@
-package dao;
+package com.kaitan.dao;
 
 import com.kaitan.dao.UserMapper;
 import com.kaitan.pojo.User;

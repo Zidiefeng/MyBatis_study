@@ -7,7 +7,7 @@
     <properties resource="db.properties"/>
 
 <!--    <typeAliases>-->
-<!--        <typeAlias type="com.kaitan.pojo.User" alias="User"/>-->
+<!--        <typeAlias type="com.User" alias="User"/>-->
 <!--    </typeAliases>-->
 
     <typeAliases>
@@ -28,7 +28,7 @@
 
     <mappers>
         <mapper resource="com/kaitan/dao/UserMapper.xml"></mapper>
-<!--        <mapper class="com.kaitan.dao.UserMapper"></mapper>-->
+<!--        <mapper class="com.UserMapper"></mapper>-->
 <!--        <package name="com.kaitan.dao"></package>-->
     </mappers>
 </configuration>

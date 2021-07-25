@@ -27,6 +27,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/kaitan/dao/UserMapper.xml"></mapper>
+<!--        <mapper resource="com/kaitan/dao/UserMapper.xml"></mapper>-->
+<!--        <mapper class="com.kaitan.dao.UserMapper"></mapper>-->
+        <package name="com.kaitan.dao"></package>
     </mappers>
 </configuration>

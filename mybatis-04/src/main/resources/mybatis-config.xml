@@ -8,7 +8,7 @@
     <settings>
 <!--        标准logging实现-->
 <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
 
     <typeAliases>

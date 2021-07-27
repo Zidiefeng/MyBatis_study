@@ -29,4 +29,8 @@
         select * from mybatis.user limit #{startIndex}, #{pageSize}
     </select>
 
+    <select id="getUserByRowBounds" resultMap="UserMap">
+        select * from mybatis.user
+    </select>
+
 </mapper>

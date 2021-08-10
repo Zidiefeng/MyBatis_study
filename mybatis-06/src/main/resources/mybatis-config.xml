@@ -30,6 +30,7 @@
     <mappers>
         <mapper class="com.kaitan.dao.TeacherMapper"/>
         <mapper class="com.kaitan.dao.StudentMapper"/>
+<!--        <mapper resource="com/kaitan/dao/StudentMapper.xml"></mapper>-->
     </mappers>
 
 </configuration>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kaitan.dao.TeacherMapper">
+<!--    <select id="getTeachers" resultType="Teacher">-->
+<!--        select * from mybatis.teacher;-->
+<!--    </select>-->
+
+    <!--method 1-->
+    <select id="getTeacher" resultMap="TeacherStudent">
+        select s.id sid, s.name sname, t.name tname, t.id tid
+        from mybatis.student s, mybatis.teacher t
+        where s.tid = t.id
+    </select>
+
+    <resultMap id="TeacherStudent" type="Teacher">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <!--List<Student>在这里用ofType-->
+        <collection property="students" ofType="Student">
+            <result property="id" column="sid"/>
+            <result property="name" column="sname"/>
+            <result property="tid" column="tid"/>
+        </collection>
+    </resultMap>
+
+    <!--method 2-->
+    <select id="getTeacherAlt" resultMap="TeacherStudentAlt">
+        select * from mybatis.teacher where id = ${tid};
+    </select>
+
+    <resultMap id="TeacherStudentAlt" type="Teacher">
+<!--        <result property="id" column="id"></result>-->
+        <collection column="id" property="students" javaType="ArrayList" ofType="Student" select="getStudentByTeacherId"/>
+    </resultMap>
+
+    <select id="getStudentByTeacherId" resultType="Student">
+        select * from mybatis.student where tid = #{tid};
+    </select>
+
+</mapper>

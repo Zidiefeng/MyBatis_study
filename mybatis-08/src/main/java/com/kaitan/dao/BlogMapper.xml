@@ -38,17 +38,34 @@
         </where>
     </select>
 
+    
+    
+    <sql id="if-title-author">
+        <if test="title !=null">
+            title = #{title},
+        </if>
+        <if test="author !=null">
+            author = #{author}
+        </if>
+    </sql>
+    
     <update id="updateBlog" parameterType="map">
         update mybatis.blog
         <set>
-            <if test="title !=null">
-                title = #{title},
-            </if>
-            <if test="author !=null">
-                author = #{author}
-            </if>
+            <include refid="if-title-author"></include>
         </set>
         where id = #{id}
     </update>
+
+    <!--select * from mybatis.blog where 1=1 and (id=1 or id=2 or id=3)-->
+    <select id="queryBlogForeach" parameterType="map" resultType="blog">
+        select * from mybatis.blog
+        <where>
+            <foreach collection="ids" item="id" open="and (" close=")" separator="or">
+                id = #{id}
+            </foreach>
+
+        </where>
+    </select>
 
 </mapper>

@@ -5,6 +5,7 @@ import com.kaitan.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -76,10 +77,29 @@ public class MyTest {
 
 //        map.put("title","JAVA so easy");
 //        map.put("views","100000");
-        map.put("author","kk");
+        map.put("author","Kaikai");
         map.put("id","bc778785d99e4360b3f68951b77772ae");
 
         mapper.updateBlog(map);
+    }
+
+    @Test
+    public void queryBlogForeach(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+
+        HashMap map = new HashMap();
+
+        ArrayList<Integer> ids = new ArrayList<>();
+        ids.add(1);
+        ids.add(2);
+
+        map.put("ids",ids);
+
+        List<Blog> blogs = mapper.queryBlogForeach(map);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
     }
 
 }

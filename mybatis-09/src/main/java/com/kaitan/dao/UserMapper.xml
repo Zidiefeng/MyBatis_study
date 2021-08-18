@@ -6,10 +6,11 @@
 <mapper namespace="com.kaitan.dao.UserMapper">
 
     <!--在当前mapper中使用二级缓存-->
-    <cache eviction="FIFO"
-           flushInterval="60000"
-           size="512"
-           readOnly="true"/>
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+<!--    <cache eviction="FIFO"-->
+<!--           flushInterval="60000"-->
+<!--           size="512"-->
+<!--           readOnly="true"/>-->
 
     <select id="queryUsersById" resultType="user" >
         select * from user where id = #{id}
